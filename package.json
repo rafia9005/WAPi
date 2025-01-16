@@ -16,9 +16,10 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@mengkodingan/ckptw": "^4.3.9",
     "@types/express": "^5.0.0",
-    "@whiskeysockets/baileys": "^6.7.9",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "qrcode-terminal": "^0.12.0"
   }
 }
