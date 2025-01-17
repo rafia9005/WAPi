@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { bot } from "./client/bot";
 import { toDataURL } from "qrcode";
 import qrcode from "qrcode-terminal";
+import router from "./router";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ let QRCodeURL: string | null = null;
 app.use(express.json());
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
+app.use(router)
 
 bot.on("qr", (qr: string) => {
   toDataURL(qr).then((url: string) => {

@@ -4,10 +4,10 @@ import { MessageMedia } from "whatsapp-web.js";
 import { processPhoneNumber } from "../utils/phoneNumber";
 
 export async function SendMessage(req: Request, res: Response): Promise<void> {
-  const { phoneNumber, message } = req.body;
+  const { phone_number, message } = req.body;
 
   try {
-    const formattedPhoneNumber = processPhoneNumber(phoneNumber);
+    const formattedPhoneNumber = processPhoneNumber(phone_number);
     await bot.sendMessage(formattedPhoneNumber, message);
     res.status(200).send({ message: "Message sent successfully" });
   } catch (err) {
@@ -17,10 +17,10 @@ export async function SendMessage(req: Request, res: Response): Promise<void> {
 }
 
 export async function SendMedia(req: Request, res: Response): Promise<void> {
-  const { phoneNumber, media, message } = req.body;
+  const { phone_number, media, message } = req.body;
 
   try {
-    const formattedPhoneNumber = processPhoneNumber(phoneNumber);
+    const formattedPhoneNumber = processPhoneNumber(phone_number);
     const mediaFile = await MessageMedia.fromUrl(media);
     await bot.sendMessage(formattedPhoneNumber, mediaFile, {
       caption: message || "",
